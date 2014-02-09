@@ -7,7 +7,8 @@ Date created:   2014-01-21 09:02
 Last modified:  2014-01-21 19:05
 
 Description:
-This script is usefull to open quickly a website sprite image and show the soordinates.
+This script is usefull to open quickly a website sprite image
+and show the soordinates.
 """
 
 import Tkinter as tk
@@ -18,19 +19,30 @@ from PIL import Image, ImageTk
 
 class SpriteViewer(tk.Frame):
     """
-    This class help users to open an image and show sprite coords for css development
+    This class help users to open an image
+    and show sprite coords for css development
     """
 
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-        self.image = Image.open(argv[1] if len(argv) >=2 else "test.png")
-        self.canvas = tk.Canvas(self, width=self.image.size[0], height=self.image.size[1], cursor="cross")
-        self.canvasResult = tk.Canvas(self, width=self.image.size[0], height=30.0)
+        self.image = Image.open(argv[1] if len(argv) >= 2 else "test.png")
+        self.canvas = tk.Canvas(self,
+                                width=self.image.size[0],
+                                height=self.image.size[1],
+                                cursor="cross")
+        self.canvasResult = tk.Canvas(self,
+                                      width=self.image.size[0],
+                                      height=30.0)
         self.image_tk = ImageTk.PhotoImage(self.image)
-        self.canvas.create_image(self.image.size[0]//2, self.image.size[1]//2, image=self.image_tk)
-        self.bg = self.canvasResult.create_rectangle(0, 0, self.image.size[0], 30.0, fill="#e7e7e7")
+        self.canvas.create_image(self.image.size[0] // 2,
+                                 self.image.size[1] // 2,
+                                 image=self.image_tk)
+        self.bg = self.canvasResult.create_rectangle(0,
+                                                     0,
+                                                     self.image.size[0],
+                                                     30.0,
+                                                     fill="#e7e7e7")
         self.txt = self.canvasResult.create_text(10, 10, anchor="nw")
-
         self.canvasResult.itemconfig(self.txt, text="Coordinates : ")
         self.canvasResult.pack(side="top", anchor="w")
 

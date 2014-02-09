@@ -7,9 +7,8 @@ Date created:   2014-01-21 09:02
 Last modified:  2014-01-21 19:05
 
 Description:
-This script is usefull to open quickly a website sprite image and show the soordinates. 
+This script is usefull to open quickly a website sprite image and show the soordinates.
 """
-
 
 import Tkinter as tk
 from Tkinter import *
@@ -19,9 +18,9 @@ from PIL import Image, ImageTk
 
 class SpriteViewer(tk.Frame):
     """
-    This class help users to open an image and show sprite coords for css development 
+    This class help users to open an image and show sprite coords for css development
     """
-    
+
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
         self.image = Image.open(argv[1] if len(argv) >=2 else "test.png")
@@ -39,6 +38,9 @@ class SpriteViewer(tk.Frame):
         self.canvas.bind("<Button-1>", self.callback)
 
     def copyToClipboard(self, coordsX, coordsY):
+        """
+        Copy coords to the clipboard
+        """
         #TODO Use xclip instead of clipboard_clear
         self.r = Tk()
         self.r.withdraw()
@@ -56,7 +58,7 @@ class SpriteViewer(tk.Frame):
         """
         self.canvasResult.itemconfig(self.txt, text="Coordinates : " +str(event.x)+'px ,'+str(event.y)+'px')
         #TODO: copy to clipboard
-        #self.copyToClipboard(str(event.x), str(event.y)) 
+        #self.copyToClipboard(str(event.x), str(event.y))
 
 
 if __name__ == "__main__":
